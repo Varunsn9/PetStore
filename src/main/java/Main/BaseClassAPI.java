@@ -10,7 +10,7 @@ import io.restassured.specification.ResponseSpecification;
 
 
 
-public class BaseClass {
+public class BaseClassAPI {
 	
 	public RequestSpecification req=null;
 	public ResponseSpecification resp=null;

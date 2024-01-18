@@ -9,12 +9,11 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.containsString;
 import java.io.File;
 import java.io.IOException;
-
-import Main.BaseClass;
+import Main.BaseClassAPI;
 import petRepo.Pet;
 import petRepo.Status;
 
-public class PetPostTestRequestChaning extends BaseClass {
+public class PetPostTestRequestChaning extends BaseClassAPI {
 
 	public int id;
 	public String name;

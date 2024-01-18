@@ -13,46 +13,57 @@ import io.restassured.http.ContentType;
 
 
 public class PostPet {
-@Test
-public void postPet() {
-	baseURI="https://petstore.swagger.io/v2";
-	  JSONObject petJsonObject = createPetJsonObject();
-	  
-	  given()
-          .contentType(ContentType.JSON)
-          .body(petJsonObject)
-      .when()
-          .post("/pet") // Replace with your actual API endpoint
-      .then()
-          .statusCode(200)
-          .log().all(); // Replace with the expected status code
-      	
-}
 
-	
-public JSONObject createPetJsonObject() {
-    JSONObject petJsonObject = new JSONObject();
-    int number=new Random().nextInt(1000);
-    petJsonObject.put("id", number);
+	int id;
 
-    JSONObject category = new JSONObject();
-    category.put("id", 0+number);
-    category.put("name", "string");
-    petJsonObject.put("category", category);
+	@Test
+	public void postPet() {
+		baseURI="https://petstore.swagger.io/v2";
+		JSONObject petJsonObject = createPetJsonObject();
 
-    petJsonObject.put("name", "daoggie"+number);
+		given()
+		.contentType(ContentType.JSON)
+		.body(petJsonObject)
+		.when()
+		.post("/pet") // Replace with your actual API endpoint
+		.then()
+		.statusCode(200)
+		.log().all(); // Replace with the expected status code
 
-    petJsonObject.put("photoUrls",new String[]{"string"});
+		//validating the pet
+		when().get("/pet/"+id)
+		.then()
+		.assertThat()
+		.statusCode(200)
+		.log().all();
 
-    JSONObject tag = new JSONObject();
-    tag.put("id", 0);
-    tag.put("name", "aang"+number);
-    petJsonObject.put("tags", new JSONObject[]{tag});
+	}
 
-    petJsonObject.put("status", "available");
 
-    return petJsonObject;
-}
+	public JSONObject createPetJsonObject() {
+		JSONObject petJsonObject = new JSONObject();
+		int number=new Random().nextInt(1000);
+		id=number;
+		petJsonObject.put("id", id);
+
+		JSONObject category = new JSONObject();
+		category.put("id", 0+number);
+		category.put("name", "string");
+		petJsonObject.put("category", category);
+
+		petJsonObject.put("name", "daoggie"+number);
+
+		petJsonObject.put("photoUrls",new String[]{"string"});
+
+		JSONObject tag = new JSONObject();
+		tag.put("id", 0);
+		tag.put("name", "aang"+number);
+		petJsonObject.put("tags", new JSONObject[]{tag});
+
+		petJsonObject.put("status", "available");
+
+		return petJsonObject;
+	}
 
 
 
