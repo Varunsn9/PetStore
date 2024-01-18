@@ -1,7 +1,5 @@
 package PetStoreFrameWork;
 
-import org.hamcrest.Matcher;
-import org.hamcrest.core.StringContains;
 import org.testng.annotations.Test;
 
 import com.fasterxml.jackson.databind.DatabindException;
@@ -16,11 +14,14 @@ import Main.BaseClass;
 import petRepo.Pet;
 import petRepo.Status;
 
-public class PetTest extends BaseClass {
+public class PetPostTestRequestChaning extends BaseClass {
 
 	public int id;
 	public String name;
 
+	//posting pet using postPet Test method and validating using GetPetAfterPost TestMethod
+	//validating using contains string
+	
 	@Test
 	public void postPet() throws Throwable, DatabindException, IOException
 	{
@@ -44,10 +45,4 @@ public class PetTest extends BaseClass {
 		.then().spec(resp).assertThat().body(containsString("abcd.com")).log().all();
 	}
 
-	//@Test
-	public void getTest() {
-		given().spec(req).queryParam("status", Status.pending)
-		.when().get("/pet/findByStatus")
-		.then().spec(resp).statusCode(200).log().all();
-	}
 }
