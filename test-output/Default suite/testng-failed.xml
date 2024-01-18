@@ -3,13 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="PetStoreFrameWork.PetTest">
+      <class name="CrudOperationOnPetStore.PutPet">
         <methods>
-          <include name="postPet"/>
-          <include name="GetPetAfterPost"/>
-          <include name="beforeMethod"/>
+          <include name="putPet"/>
         </methods>
-      </class> <!-- PetStoreFrameWork.PetTest -->
+      </class> <!-- CrudOperationOnPetStore.PutPet -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
