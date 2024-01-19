@@ -3,11 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="CrudOperationOnPetStore.PutPet">
+      <class name="API_Validations.BodyContentValidation">
         <methods>
-          <include name="putPet"/>
+          <include name="beforeTest"/>
+          <include name="bodyValidation"/>
         </methods>
-      </class> <!-- CrudOperationOnPetStore.PutPet -->
+      </class> <!-- API_Validations.BodyContentValidation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
